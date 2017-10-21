@@ -16,7 +16,7 @@ The Compressible Euler equations are described by the non-linear system of parti
 E_t + (u(E+P))_x + (v(E+P))_y = 0
 ```
 
-where ```ρ```, ```u```, ```u```, ```P``` and ```E``` are the density, ```x``` and ```y``` velocity components, pressure and energy of the gas being modelled. The equation of state for an ideal gas is used which is given by
+where ```ρ```, ```u```, ```v```, ```P``` and ```E``` are the density, ```x``` and ```y``` velocity components, pressure and energy of the gas being modelled. The equation of state for an ideal gas is used which is given by
 
 ```
 E=P/(1-γ) + 0.5ρ(u^2 + v^2)
