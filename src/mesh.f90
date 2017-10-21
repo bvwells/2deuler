@@ -29,9 +29,9 @@ contains
       integer :: i, j, ios
 
       ! Read in mesh node co-ordinates
-      write (6, *) 'Reading file '//MeshFilename
+      write (6, *) 'Reading file '// MeshFilename
       open (unit=10, file=MeshFilename, status='old', iostat=ios)
-      if (ios .ne. 0) stop 'Can not open file '//MeshFilename
+      if (ios .ne. 0) stop 'Can not open file '// MeshFilename
       read (10, *) NoOfNodes
       allocate (x(NoOfNodes, NoOfDimensions))
       allocate (xdot(NoOfNodes, NoOfDimensions))
