@@ -31,7 +31,7 @@ contains
       ! Read in mesh node co-ordinates
       write (6, *) 'Reading file '// MeshFilename
       open (unit=10, file=MeshFilename, status='old', iostat=ios)
-      if (ios .ne. 0) stop 'Can not open file '// MeshFilename
+      if (ios .ne. 0) stop 'Can not open file mesh file.'
       read (10, *) NoOfNodes
       allocate (x(NoOfNodes, NoOfDimensions))
       allocate (xdot(NoOfNodes, NoOfDimensions))
@@ -44,7 +44,7 @@ contains
       ! Read in mesh cell data
       write (6, *) 'Reading file '//CellFilename
       open (unit=10, file=CellFilename, status='old', iostat=ios)
-      if (ios .ne. 0) stop 'Can not open file '//CellFilename
+      if (ios .ne. 0) stop 'Can not open file cell file.'
       read (10, *) NoOfCells, NoOfNodesInCell
       allocate (cells(NoOfCells, NoOfNodesInCell))
       do i = 1, NoOfCells
