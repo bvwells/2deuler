@@ -107,6 +107,7 @@ contains
          PA = 0; PB = 0
          do i = 1, nodes
             !find diagonal elememt in A
+            denom = 1.0d0
             do j = 1, max_tris + 1
                if (C(i, j) == i) then
                   denom = A(i, j)

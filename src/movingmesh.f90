@@ -1,4 +1,4 @@
-subroutine MoveMesh(x, xdot, uvertex, ud, cellsize, con, Cells, TimeStep)
+subroutine MoveMesh(x, xdot, uvertex, cellsize, con, Cells, TimeStep)
    use MeshClass
    use SolutionClass
    implicit none
@@ -6,18 +6,17 @@ subroutine MoveMesh(x, xdot, uvertex, ud, cellsize, con, Cells, TimeStep)
    double precision, intent(in) :: TimeStep
    double precision, intent(inout), dimension(NoOfNodes, NoOfDimensions) :: x, xdot
    double precision, intent(in), dimension(NoOfNodes, NoOfEquations) :: uvertex
-   double precision, intent(in), dimension(NoOfCells, NoOfEquations) :: ud
    double precision, intent(inout), dimension(1:NoOfCells, 2) :: cellsize
    integer, intent(in), dimension(NoOfCells, NoOfNodesInCell) :: cells
    integer, intent(in), dimension(NoOfNodes, MaxNoOfSurroundingCells + 1) :: con
 
    if (MovingMeshChoice == 2) then
       call lagrangian(x, xdot, uvertex, cellsize, Cells, con)
-      call TimeStepMesh(x, xdot, Timestep)
    elseif (MovingMeshChoice == 3) then
       call ARC(x, xdot, uvertex, cellsize, cells, con)
-      call TimeStepMesh(x, xdot, Timestep)
    endif
+
+   call TimeStepMesh(x, xdot, Timestep)
 
    return
 end subroutine MoveMesh
@@ -185,7 +184,7 @@ subroutine lagrangian(x, xdot, uvertex, cellsize, cells, Con)
    double precision, dimension(1:NoOfCells, 1:NoOfDimensions, 1:NoOfNodesInCell) :: grad
    double precision, dimension(1:NoOfNodesInCell, 1:NoOfNodesInCell) :: int
    double precision :: integral
-   integer :: i, j, k, L, loc, count
+   integer :: i, j, k, L, loc
 !==============================================================================
    B = 0; psi = 0; i = 0; j = 0; k = 0; L = 0; mass = 0; B_1 = 0; B_2 = 0; rhs = 0; grad = 0; 
    int(1, 1) = 1.0d0/12.0d0; int(1, 2) = 1.0d0/24.0d0; int(1, 3) = 1.0d0/24.0d0

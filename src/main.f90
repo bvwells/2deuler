@@ -80,7 +80,7 @@ program Euler2D
 
       ! Move the mesh
       if (MovingMeshChoice .gt. 1) then
-         call MoveMesh(x, xdot, uvertex, ud, cellsize, Con, Cells, TimeStep)
+         call MoveMesh(x, xdot, uvertex, cellsize, Con, Cells, TimeStep)
       endif
 
       ! Solve the Euler equations
